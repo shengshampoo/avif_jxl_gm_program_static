@@ -78,6 +78,7 @@ cd $WORKSPACE
 git clone https://github.com/xiph/rav1e.git
 cd rav1e
 RUSTFLAGS="-C strip=symbols -C opt-level=s" cargo cinstall --prefix=/usr --libdir=/usr/lib --includedir=/usr/include
+rm /usr/lib/librav1e.so*
 
 # SVT-AV1
 cd $WORKSPACE
