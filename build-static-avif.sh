@@ -86,9 +86,8 @@ RUSTFLAGS="-C linker=rust-lld -C strip=symbols -C opt-level=s" cargo cinstall --
 cd $WORKSPACE
 git clone https://gitlab.com/AOMediaCodec/SVT-AV1.git
 cd SVT-AV1
-mkdir 
-build
-cd ./build
+mkdir build
+cd build
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_DEC=ON -DBUILD_SHARED_LIBS=OFF -DENABLE_AVX512=ON -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
 ninja
 ninja install
@@ -114,4 +113,21 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/libavifmm \
  -Dpkgcfg_lib_PC_LIBXML_xml2=/usr/lib/libxml2.a -DAVIF_BUILD_APPS=ON .. 
 ninja
 ninja install
-
+cd ../
+mkdir build2
+cd build2
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
+ -DAVIF_LIBXML2=SYSTEM -DAVIF_CODEC_AOM=SYSTEM -DAVIF_CODEC_DAV1D=SYSTEM 
+ -DAVIF_CODEC_LIBGAV1=SYSTEM -DAVIF_CODEC_RAV1E=SYSTEM -DAVIF_CODEC_SVT=SYSTEM \
+ -DAVIF_BUILD_APPS=SYSTEM -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF \
+ -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s -labsl_base" \
+ -DLIBYUV_INCLUDE_DIR=/usr/include -DLIBYUV_LIBRARY=/usr/lib/libyuv.a \
+ -DDAV1D_INCLUDE_DIR=/usr/include -DDAV1D_LIBRARY=/usr/lib/libdav1d.a \
+ -DRAV1E_INCLUDE_DIR=/usr/include/rav1e -DRAV1E_LIBRARIES=/usr/lib/librav1e.a \
+ -DSVT_INCLUDE_DIR=/usr/include -DSVT_LIBRARY=/usr/lib/libSvtAv1Enc.a 
+ -DPNG_LIBRARY=/usr/lib/libpng.a -DPNG_PNG_INCLUDE_DIR=/usr/include \
+ -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
+ -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBXML2_LIBRARY=/usr/lib/libxml2.a \
+ -Dpkgcfg_lib_PC_LIBXML_xml2=/usr/lib/libxml2.a -DAVIF_BUILD_APPS=ON .. 
+ninja
+ninja install
