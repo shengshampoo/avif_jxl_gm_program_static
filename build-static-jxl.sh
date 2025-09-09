@@ -46,7 +46,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/jpegxlmm \
  -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF \
  -DPNG_LIBRARY=/usr/lib/libpng.a -DPNG_PNG_INCLUDE_DIR=/usr/include \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
- -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
+ -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s -lopenjph" \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
 sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
 ninja
@@ -58,7 +58,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF \
  -DPNG_LIBRARY=/usr/lib/libpng.a -DPNG_PNG_INCLUDE_DIR=/usr/include \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
- -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
+ -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s -lopenjph" \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
 sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
 ninja
