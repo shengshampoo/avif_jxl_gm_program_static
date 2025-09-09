@@ -4,6 +4,7 @@ set -e
 
 WORKSPACE=/tmp/workspace
 mkdir -p $WORKSPACE
+mkdir -p /work/artifact
 
 # libxml
 cd $WORKSPACE
@@ -102,7 +103,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/libavifmm \
  -DLIBYUV_INCLUDE_DIR=/usr/include -DLIBYUV_LIBRARY=/usr/lib/libyuv.a \
  -DDAV1D_INCLUDE_DIR=/usr/include -DDAV1D_LIBRARY=/usr/lib/libdav1d.a \
  -DRAV1E_INCLUDE_DIR=/usr/include/rav1e -DRAV1E_LIBRARIES=/usr/lib/librav1e.a \
- -DSVT_INCLUDE_DIR=/usr/include -DSVT_LIBRARY=/usr/lib/libSvtAv1Enc.a 
+ -DSVT_INCLUDE_DIR=/usr/include -DSVT_LIBRARY=/usr/lib/libSvtAv1Enc.a \
  -DPNG_LIBRARY=/usr/lib/libpng.a -DPNG_PNG_INCLUDE_DIR=/usr/include \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBXML2_LIBRARY=/usr/lib/libxml2.a \
@@ -120,10 +121,15 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DLIBYUV_INCLUDE_DIR=/usr/include -DLIBYUV_LIBRARY=/usr/lib/libyuv.a \
  -DDAV1D_INCLUDE_DIR=/usr/include -DDAV1D_LIBRARY=/usr/lib/libdav1d.a \
  -DRAV1E_INCLUDE_DIR=/usr/include/rav1e -DRAV1E_LIBRARIES=/usr/lib/librav1e.a \
- -DSVT_INCLUDE_DIR=/usr/include -DSVT_LIBRARY=/usr/lib/libSvtAv1Enc.a 
+ -DSVT_INCLUDE_DIR=/usr/include -DSVT_LIBRARY=/usr/lib/libSvtAv1Enc.a \
  -DPNG_LIBRARY=/usr/lib/libpng.a -DPNG_PNG_INCLUDE_DIR=/usr/include \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBXML2_LIBRARY=/usr/lib/libxml2.a \
  -Dpkgcfg_lib_PC_LIBXML_xml2=/usr/lib/libxml2.a -DAVIF_BUILD_APPS=ON .. 
 ninja
 ninja install
+
+cd /usr/local
+tar vcJf ./libavifmm.tar.xz libavifmm
+
+mv ./libavifmm.tar.xz /work/artifact/
