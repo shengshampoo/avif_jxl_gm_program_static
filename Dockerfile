@@ -16,7 +16,7 @@ RUN apk add --no-cache \
  openssl-dev openssl-libs-static \
  xz-static xz-dev libtool \
  autoconf automake patch bash \
- rust cargo cargo-c
+ rust cargo cargo-c zstd-static zstd-dev
 
 COPY build-static-avif.sh build-static-avif.sh
 RUN chmod +x ./build-static-avif.sh
