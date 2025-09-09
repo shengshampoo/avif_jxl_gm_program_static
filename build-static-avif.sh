@@ -72,15 +72,11 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_CCACHE=0 -DENABLE_DOCS=OFF -
 ninja
 ninja install
 
-# cargo-c
-cd $WORKSPACE
-cargo install --git https://github.com/lu-zero/cargo-c.git
-
 # rav1e
 cd $WORKSPACE
 git clone https://github.com/xiph/rav1e.git
 cd rav1e
-RUSTFLAGS="-C target-feature=+crt-static -C linker=rust-lld -C strip=symbols -C opt-level=s" cargo cinstall --prefix=/usr --libdir=/usr/lib --includedir=/usr/include
+RUSTFLAGS="-C strip=symbols -C opt-level=s" cargo cinstall --prefix=/usr --libdir=/usr/lib --includedir=/usr/include
 
 # SVT-AV1
 cd $WORKSPACE
