@@ -1,4 +1,4 @@
-FROM rust:alpine3.22
+FROM alpine:latest
 
 # https://mirrors.alpinelinux.org/
 RUN sed -i 's@dl-cdn.alpinelinux.org@ftp.halifax.rwth-aachen.de@g' /etc/apk/repositories
@@ -15,7 +15,8 @@ RUN apk add --no-cache \
  cmake ninja meson g++ nasm perl \
  openssl-dev openssl-libs-static \
  xz-static xz-dev libtool \
- autoconf automake patch bash
+ autoconf automake patch bash \
+ rust cargo cargo-c
 
 COPY build-static-avif.sh build-static-avif.sh
 RUN chmod +x ./build-static-avif.sh
