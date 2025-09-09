@@ -25,6 +25,20 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD
 ninja
 ninja install
 
+# libtiff
+cd $WORKSPACE
+git clone https://gitlab.com/libtiff/libtiff.git
+cd libtiff
+mkdir build0
+cd build0
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF \
+ -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
+ -DZSTD_LIBRARY_RELEASE=/usr/lib/libzstd.a -DLIBLZMA_LIBRARY_RELEASE=/usr/lib/liblzma.a -DDeflate_LIBRARY_RELEASE=/usr/lib/libdeflate.a \
+ -DJPEG_LIBRARY_RELEASE=/usr/lib/libjpeg.a -DWebP_LIBRARY_RELEASE=/usr/lib/libwebp.a -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
+sed -i 's@/usr/lib/libwebp.a@/usr/lib/libwebp.a /usr/lib/libsharpyuv.a@g' ./build.ninja
+ninja
+ninja install
+
 # OpenJPH
 cd $WORKSPACE
 git clone https://github.com/aous72/OpenJPH.git
