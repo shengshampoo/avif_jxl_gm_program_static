@@ -15,16 +15,6 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD
 ninja
 ninja install
 
-# openexr
-cd $WORKSPACE
-git clone https://github.com/AcademySoftwareFoundation/openexr.git
-cd openexr
-mkdir build0
-cd build0
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
-ninja
-ninja install
-
 # OpenJPH
 cd $WORKSPACE
 git clone https://github.com/aous72/OpenJPH.git
@@ -35,6 +25,15 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD
 ninja
 ninja install
 
+# openexr
+cd $WORKSPACE
+git clone https://github.com/AcademySoftwareFoundation/openexr.git
+cd openexr
+mkdir build0
+cd build0
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+ninja
+ninja install
 
 # jpeg-xl
 cd $WORKSPACE
