@@ -31,7 +31,7 @@ git clone https://github.com/abseil/abseil-cpp.git
 cd abseil-cpp
 mkdir build0
 cd build0
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DABSL_BUILD_TESTING=OFF -DABSL_USE_GOOGLETEST_HEAD=ON -DCMAKE_CXX_STANDARD=14 -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DABSL_BUILD_TESTING=OFF -DABSL_USE_GOOGLETEST_HEAD=ON -DCMAKE_CXX_STANDARD=17 -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
 ninja
 ninja install
 
@@ -55,7 +55,9 @@ git clone https://github.com/google/googletest.git ./third_party/googletest
 sed -i '/.*CXX_STANDARD 11)$/s/11/17/' ./CMakeLists.txt
 mkdir build0
 cd build0
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DLIBGAV1_THREADPOOL_USE_STD_MUTEX=1 -DLIBGAV1_ENABLE_TESTS=0 -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DLIBGAV1_THREADPOOL_USE_STD_MUTEX=1 \
+  -DLIBGAV1_ENABLE_TESTS=0 -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF \
+  -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" -DCMAKE_CXX_STANDARD=17 ..
 ninja
 ninja install
 
