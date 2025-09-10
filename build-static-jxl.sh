@@ -39,25 +39,17 @@ sed -i 's@/usr/lib/libwebp.a@/usr/lib/libwebp.a /usr/lib/libsharpyuv.a@g' ./buil
 ninja
 ninja install
 
-# OpenJPH
-#cd $WORKSPACE
-#git clone https://github.com/aous72/OpenJPH.git
-#cd OpenJPH
-#mkdir build0
-#cd build0
-#cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DOJPH_ENABLE_TIFF_SUPPORT=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
-#ninja
-#ninja install
-
 # openexr
-#cd $WORKSPACE
-#git clone https://github.com/AcademySoftwareFoundation/openexr.git
-#cd openexr
-#mkdir build0
-#cd build0
-#cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
-#ninja
-#ninja install
+cd $WORKSPACE
+git clone https://github.com/AcademySoftwareFoundation/openexr.git
+cd openexr
+git checkout v3.3.5 
+mkdir build0
+cd build0
+sed -i 's@libdeflate.so.0@libdeflate.a@g'  ./build.ninja
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+ninja
+ninja install
 
 # jpeg-xl
 cd $WORKSPACE
@@ -72,6 +64,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/jpegxlmm \
  -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
 sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
+sed -i 's@libImath-3_2.a@libImath-3_2.a /usr/lib/libdeflate.a@g'  ./build.ninja
 ninja
 ninja install
 cd ../
@@ -84,6 +77,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
 sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
+sed -i 's@libImath-3_2.a@libImath-3_2.a /usr/lib/libdeflate.a@g'  ./build.ninja
 ninja
 ninja install
 
