@@ -78,7 +78,6 @@ cd $WORKSPACE
 git clone https://github.com/xiph/rav1e.git
 cd rav1e
 RUSTFLAGS="-C strip=symbols -C opt-level=s" cargo cinstall --prefix=/usr --libdir=/usr/lib --includedir=/usr/include
-rm /usr/lib/librav1e.so*
 
 # SVT-AV1
 cd $WORKSPACE
@@ -109,6 +108,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/libavifmm \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBXML2_LIBRARY=/usr/lib/libxml2.a \
  -Dpkgcfg_lib_PC_LIBXML_xml2=/usr/lib/libxml2.a -DAVIF_BUILD_APPS=ON .. 
+sed -i 's@librav1e.so@librav1e.a@g'  ./build.ninja
 ninja
 ninja install
 cd ../
@@ -126,7 +126,8 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DPNG_LIBRARY=/usr/lib/libpng.a -DPNG_PNG_INCLUDE_DIR=/usr/include \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBXML2_LIBRARY=/usr/lib/libxml2.a \
- -Dpkgcfg_lib_PC_LIBXML_xml2=/usr/lib/libxml2.a -DAVIF_BUILD_APPS=ON .. 
+ -Dpkgcfg_lib_PC_LIBXML_xml2=/usr/lib/libxml2.a -DAVIF_BUILD_APPS=ON ..
+sed -i 's@librav1e.so@librav1e.a@g'  ./build.ninja 
 ninja
 ninja install
 
