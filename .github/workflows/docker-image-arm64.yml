@@ -1,0 +1,29 @@
+name: Docker Image CI - X86_64 for Alpine Linux with rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-24.04-arm
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build --tag builder .
+
+    - name: build static program with alpine linux docker 
+      run: |
+        docker run --cidfile=builder.cid builder true
+        docker cp "$(cat builder.cid):work/artifact/." .
+
+    - name: Upload static program
+      uses: actions/upload-artifact@v4
+      with:
+        name: avifmm
+        path: ./*.tar.xz      
