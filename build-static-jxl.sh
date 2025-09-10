@@ -46,8 +46,8 @@ cd openexr
 git checkout v3.3.5 
 mkdir build0
 cd build0
-sed -i 's@libdeflate.so.0@libdeflate.a@g'  ./build.ninja
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+sed -i 's@libdeflate.so.0@libdeflate.a@g'  ./build.ninja
 ninja
 ninja install
 
