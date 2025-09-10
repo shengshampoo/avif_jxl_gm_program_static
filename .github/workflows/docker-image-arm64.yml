@@ -1,4 +1,4 @@
-name: Docker Image CI - X86_64 for Alpine Linux with rust
+name: Docker Image CI - AARCH64 for Alpine Linux with rust
 
 on:
   push:
