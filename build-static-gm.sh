@@ -57,7 +57,7 @@ sed -i '30391s@-gt 0@-gt 20@' ./configure
 sed -i '31162s@-gt 0@-gt 20@' ./configure
 sed -i '24868s@-gt 0@-gt 20@' ./configure
 sed -i '24811s@no@yes@' ./configure
-LDFLAGS="-static --static -no-pie -s -lbrotlienc -lbrotlidec -lbrotlicommon -lavif -laom -lgav1 -ldav1d -lSvtAv1Enc -lrav1e -lyuv -ldeflate -lz" ./configure --prefix=/usr/local/graphicsmagickmm --without-x --with-tcmalloc 
+LDFLAGS="-static --static -no-pie -s -lde265 -lbrotlienc -lbrotlidec -lbrotlicommon -lavif -laom -lgav1 -ldav1d -lSvtAv1Enc -lrav1e -lyuv -ldeflate -lz" ./configure --prefix=/usr/local/graphicsmagickmm --without-x --with-tcmalloc 
 make
 make install
 
