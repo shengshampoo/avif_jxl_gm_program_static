@@ -4,7 +4,6 @@ set -e
 
 WORKSPACE=/tmp/workspace
 
-apk add sdl2-dev
 
 # libde265
 cd $WORKSPACE
