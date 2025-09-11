@@ -53,10 +53,6 @@ cd $WORKSPACE
 aq=$(curl -sL https://sourceforge.net/projects/graphicsmagick/best_release.json | jq -r '.platform_releases.linux.filename' | sed 's/.*\///' | sed 's/.tar.*$//')
 curl -sL $(curl -sL https://sourceforge.net/projects/graphicsmagick/best_release.json | jq -r '.platform_releases.linux.url' | sed 's/?.*$//') | tar xv --xz
 cd $aq
-sed -i '30391s@-gt 0@-gt 20@' ./configure
-sed -i '31162s@-gt 0@-gt 20@' ./configure
-sed -i '24868s@-gt 0@-gt 20@' ./configure
-sed -i '24811s@no@yes@' ./configure
 LDFLAGS="-static --static -no-pie -s -lde265 -lbrotlienc -lbrotlidec -lbrotlicommon -lavif -laom -lgav1 -ldav1d -lSvtAv1Enc -lrav1e -lyuv -ldeflate -lz" ./configure --prefix=/usr/local/graphicsmagickmm --without-x --with-tcmalloc 
 make
 make install
