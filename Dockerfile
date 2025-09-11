@@ -20,8 +20,14 @@ RUN apk add --no-cache \
 
 COPY build-static-avif.sh build-static-avif.sh
 RUN chmod +x ./build-static-avif.sh
-RUN bash ./build-static-avif.sh 
+RUN bash ./build-static-avif.sh
 
 COPY build-static-jxl.sh build-static-jxl.sh
 RUN chmod +x ./build-static-jxl.sh
-RUN bash ./build-static-jxl.sh 
+RUN bash ./build-static-jxl.sh
+
+RUN apk add --no-cache \
+ sdl2-dev libunwind-dev libunwind-static grep jq
+COPY build-static-gm.sh build-static-gm.sh
+RUN chmod +x ./build-static-gm.sh
+RUN bash ./build-static-gm.sh
