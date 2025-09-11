@@ -18,6 +18,7 @@ RUN apk add --no-cache \
  autoconf automake patch bash \
  rust cargo cargo-c zstd-static zstd-dev
 
+ENV XZ_OPT=-e9
 COPY build-static-avif.sh build-static-avif.sh
 RUN chmod +x ./build-static-avif.sh
 RUN bash ./build-static-avif.sh
