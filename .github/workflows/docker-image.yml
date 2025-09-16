@@ -11,9 +11,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        programm: [libavifmm, jpegxlmm, graphicsmagickmm, libheifmm]
+    
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
@@ -24,8 +22,23 @@ jobs:
         docker run --cidfile=builder.cid builder true
         docker cp "$(cat builder.cid):work/artifact/." .
 
-    - name: Upload static program - ${{ matrix.programm }}
+    - name: Upload static program - libavifmm
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.programm }}
-        path: ./${{ matrix.programm }}.tar.xz        
+        name: libavifmm
+        path: ./libavifmm.tar.xz        
+    - name: Upload static program - jpegxlmm
+      uses: actions/upload-artifact@v4
+      with:
+        name: jpegxlmm
+        path: ./jpegxlmm.tar.xz 
+    - name: Upload static program - graphicsmagickmm
+      uses: actions/upload-artifact@v4
+      with:
+        name: graphicsmagickmm
+        path: ./graphicsmagickmm.tar.xz  
+    - name: Upload static program - libheifmm
+      uses: actions/upload-artifact@v4
+      with:
+        name: libheifmm
+        path: ./libheifmm.tar.xz               
