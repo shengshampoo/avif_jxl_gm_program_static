@@ -1,4 +1,4 @@
-name: Docker Image CI - X86_64 for Alpine Linux with rust
+name: Docker Image CI - X86_64/AARCH64 for Alpine Linux with rust
 
 on:
   push:
@@ -9,8 +9,10 @@ on:
 jobs:
 
   build:
-
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.os }}
     
     steps:
     - uses: actions/checkout@v4
@@ -25,20 +27,20 @@ jobs:
     - name: Upload static program - libavifmm
       uses: actions/upload-artifact@v4
       with:
-        name: libavifmm
+        name: libavifmm-${{ matrix.os }}
         path: ./libavifmm.tar.xz        
     - name: Upload static program - jpegxlmm
       uses: actions/upload-artifact@v4
       with:
-        name: jpegxlmm
+        name: jpegxlmm-${{ matrix.os }}
         path: ./jpegxlmm.tar.xz 
     - name: Upload static program - graphicsmagickmm
       uses: actions/upload-artifact@v4
       with:
-        name: graphicsmagickmm
+        name: graphicsmagickmm-${{ matrix.os }}
         path: ./graphicsmagickmm.tar.xz  
     - name: Upload static program - libheifmm
       uses: actions/upload-artifact@v4
       with:
-        name: libheifmm
+        name: libheifmm-${{ matrix.os }}
         path: ./libheifmm.tar.xz               
