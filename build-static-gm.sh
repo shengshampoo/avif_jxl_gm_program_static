@@ -74,4 +74,4 @@ make install
 cd /usr/local
 tar vcJf ./libheifmm.tar.xz libheifmm
 tar vcJf ./graphicsmagickmm.tar.xz graphicsmagickmm
-mv ./graphicsmagickmm.tar.xz /work/artifact/
+mv ./graphicsmagickmm.tar.xz ./libheifmm.tar.xz /work/artifact/
