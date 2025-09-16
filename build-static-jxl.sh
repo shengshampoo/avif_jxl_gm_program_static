@@ -53,7 +53,8 @@ ninja install
 # openexr
 cd $WORKSPACE
 git clone https://github.com/AcademySoftwareFoundation/openexr.git
-cd openexr && git checkout v3.4.0
+cd openexr
+cp /usr/include/openjph/ojph_*.h /usr/include/
 mkdir build0
 cd build0
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
