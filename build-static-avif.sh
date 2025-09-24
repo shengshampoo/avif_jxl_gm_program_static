@@ -9,7 +9,7 @@ mkdir -p /work/artifact
 # libxml
 cd $WORKSPACE
 aa=2.13.8 
-curl -sL https://gitlab.gnome.org/GNOME/libxml2/-/archive/v$aa/libxml2-v$aa.tar.bz2 | tar xv --bzip2
+curl -sL https://gitlab.gnome.org/GNOME/libxml2/-/archive/v$aa/libxml2-v$aa.tar.bz2 | tar x --bzip2
 cd libxml2-v$aa
 sh autogen.sh
 LDFLAGS="-static --static -no-pie -s" ./configure --prefix=/usr --enable-static --disable-shared
