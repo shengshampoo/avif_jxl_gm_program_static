@@ -12,7 +12,7 @@ cd libde265
 mkdir build0
 cd build0
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_ENCODER=ON -DENABLE_ENCODER=OFF -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
-sed -i 's@libSDL2-2.0.so.0.3200.8@libSDL2.a@g' ./build.ninja
+sed -i 's@libSDL2-2.0.so.0.3200.10@libSDL2.a@g' ./build.ninja
 ninja
 ninja install
 
