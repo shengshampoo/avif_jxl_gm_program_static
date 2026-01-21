@@ -1,8 +1,10 @@
-name: Docker Image CI - X86_64/AARCH64 for Alpine Linux with rust
+name: Docker Image CI - X86_64/AARCH64 for Alpine Linux with rust to continuous tags
 
 on:
   push:
     branches: [ "main" ]
+    tags:
+      - 'continuous'    
   pull_request:
     branches: [ "main" ]
   # run it manually
