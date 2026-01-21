@@ -1,0 +1,66 @@
+name: Docker Image CI - X86_64/AARCH64 for Alpine Linux with rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # run it manually
+  workflow_dispatch:
+    
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+      packages: write
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build --tag builder .
+
+    - name: build static program with alpine linux docker 
+      run: |
+        docker run --cidfile=builder.cid builder true
+        docker cp "$(cat builder.cid):work/artifact/." .
+
+    - name: Upload binaries to release - libavif
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: ./libavifmm.tar.xz
+        asset_name: libavifmm-${{ runner.os }}-${{ runner.arch }}.tar.xz
+        tag: refs/tags/continuous
+        overwrite: true
+        body: "fully static libavif binary using alpine linux docker containers"
+
+    - name: Upload binaries to release - jpegxl
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: ./jpegxlmm.tar.xz
+        asset_name: jpegxlmm-${{ runner.os }}-${{ runner.arch }}.tar.xz
+        tag: refs/tags/continuous
+        overwrite: true
+        body: "fully static jpegxl binary using alpine linux docker containers"
+
+    - name: Upload binaries to release - graphicsmagick
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: ./graphicsmagickmm.tar.xz
+        asset_name: graphicsmagickmm-${{ runner.os }}-${{ runner.arch }}.tar.xz
+        tag: refs/tags/continuous
+        overwrite: true
+        body: "fully static graphicsmagick binary using alpine linux docker containers"
+
+    - name: Upload binaries to release - libheif
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: ./libheifmm.tar.xz
+        asset_name: libheifmm-${{ runner.os }}-${{ runner.arch }}.tar.xz
+        tag: refs/tags/continuous
+        overwrite: true
+        body: "fully static libheif binary using alpine linux docker containers"            
