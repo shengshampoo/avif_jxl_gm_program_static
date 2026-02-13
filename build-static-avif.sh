@@ -93,7 +93,6 @@ ninja install
 cd $WORKSPACE
 git clone https://github.com/AOMediaCodec/libavif.git 
 cd libavif
-curl -sL https://patch-diff.githubusercontent.com/raw/AOMediaCodec/libavif/pull/2971.patch | patch -p1
 mkdir build
 cd build
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/libavifmm \
