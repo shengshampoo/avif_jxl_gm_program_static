@@ -76,6 +76,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/jpegxlmm \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
 sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
 sed -i 's@libImath-3_2.a@libImath-3_2.a /usr/lib/libdeflate.a /usr/lib/libopenjph.a@g'  ./build.ninja
+sed -i 's@libjpeg.so.8.3.2@libjpeg.a@g'  ./build.ninja
 ninja
 ninja install
 cd ../
@@ -89,6 +90,7 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
 sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
 sed -i 's@libImath-3_2.a@libImath-3_2.a /usr/lib/libdeflate.a /usr/lib/libopenjph.a@g'  ./build.ninja
+sed -i 's@libjpeg.so.8.3.2@libjpeg.a@g'  ./build.ninja
 ninja
 ninja install
 
