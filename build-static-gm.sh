@@ -26,6 +26,8 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD
  -DJPEG_LIBRARY_RELEASE=/usr/lib/libjpeg.a -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBSHARPYUV_LIBRARY=/usr/lib/libsharpyuv.a -DPNG_LIBRARY_RELEASE=/usr/lib/libpng.a ..
 sed -i 's@libtiff.a@libtiff.a /usr/lib/libzstd.a /usr/lib/libdeflate.a /usr/lib/libz.a /usr/lib/libwebp.a /usr/lib/libjpeg.a /usr/lib/libpng.a /usr/lib/liblzma.a /usr/lib/libsharpyuv.a@g' ./build.ninja
 sed -i 's@libSDL2-2.0.so.0.3200.10@libSDL2.a@g' ./build.ninja
+sed -i 's@libwebpmux.so@libwebpmux.a@g' ./build.ninja
+sed -i 's@libwebp.so@libwebp.a@g' ./build.ninja
 ninja
 ninja install
 cd ../
@@ -35,6 +37,8 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/libheifmm -DCMAKE_BUILD_TYPE=Mi
  -DJPEG_LIBRARY_RELEASE=/usr/lib/libjpeg.a -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBSHARPYUV_LIBRARY=/usr/lib/libsharpyuv.a -DPNG_LIBRARY_RELEASE=/usr/lib/libpng.a ..
 sed -i 's@libtiff.a@libtiff.a /usr/lib/libzstd.a /usr/lib/libdeflate.a /usr/lib/libz.a /usr/lib/libwebp.a /usr/lib/libjpeg.a /usr/lib/libpng.a /usr/lib/liblzma.a /usr/lib/libsharpyuv.a@g' ./build.ninja
 sed -i 's@libSDL2-2.0.so.0.3200.10@libSDL2.a@g' ./build.ninja
+sed -i 's@libwebpmux.so@libwebpmux.a@g' ./build.ninja
+sed -i 's@libwebp.so@libwebp.a@g' ./build.ninja
 ninja
 ninja install
 
