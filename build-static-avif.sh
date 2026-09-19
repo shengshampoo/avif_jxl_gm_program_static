@@ -69,7 +69,8 @@ cd aom
 #curl -sL https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/main/aom/posix-implicit.patch | patch -p1
 mkdir build0
 cd build0
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_CCACHE=0 -DENABLE_DOCS=OFF -D_POSIX_C_SOURCE=200112L -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_CCACHE=0 -DENABLE_DOCS=OFF -D_POSIX_C_SOURCE=200112L -DCMAKE_C_FLAGS="-D_XOPEN_SOURCE=700" -DCMAKE_CXX_FLAGS="-D_XOPEN_SOURCE=700" \
+-DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
 ninja
 ninja install
 
