@@ -24,7 +24,8 @@ mkdir build0
 cd build0
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
  -DJPEG_LIBRARY_RELEASE=/usr/lib/libjpeg.a -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBSHARPYUV_LIBRARY=/usr/lib/libsharpyuv.a -DPNG_LIBRARY_RELEASE=/usr/lib/libpng.a \
- -DWITH_AOM_DECODER -DWITH_AOM_ENCODER -DWITH_SvtEnc -DWITH_DAV1D -DWITH_JPEG_DECODER -DWITH_JPEG_ENCODER -DWITH_OpenJPEG_DECODER -DWITH_OpenJPEG_ENCODER -DWITH_OPENJPH_ENCODER ..
+ -DWITH_AOM_DECODER=true -DWITH_AOM_ENCODER=true -DWITH_SvtEnc=true -DWITH_DAV1D=true \
+ -DWITH_JPEG_DECODER=true -DWITH_JPEG_ENCODER=true -DWITH_OpenJPEG_DECODER=true -DWITH_OpenJPEG_ENCODER=true -DWITH_OPENJPH_ENCODER=true ..
 sed -i 's@libtiff.a@libtiff.a /usr/lib/libzstd.a /usr/lib/libdeflate.a /usr/lib/libz.a /usr/lib/libwebp.a /usr/lib/libjpeg.a /usr/lib/libpng.a /usr/lib/liblzma.a /usr/lib/libsharpyuv.a@g' ./build.ninja
 sed -i 's@libSDL2-2.0.so.0.3200.10@libSDL2.a@g' ./build.ninja
 sed -i 's@libwebpmux.so@libwebpmux.a@g' ./build.ninja
@@ -36,7 +37,8 @@ mkdir build2
 cd build2
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/libheifmm -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
  -DJPEG_LIBRARY_RELEASE=/usr/lib/libjpeg.a -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a -DLIBSHARPYUV_LIBRARY=/usr/lib/libsharpyuv.a -DPNG_LIBRARY_RELEASE=/usr/lib/libpng.a \
- -DWITH_AOM_DECODER -DWITH_AOM_ENCODER -DWITH_SvtEnc -DWITH_DAV1D -DWITH_JPEG_DECODER -DWITH_JPEG_ENCODER -DWITH_OpenJPEG_DECODER -DWITH_OpenJPEG_ENCODER -DWITH_OPENJPH_ENCODER ..
+ -DWITH_AOM_DECODER=true -DWITH_AOM_ENCODER=true -DWITH_SvtEnc=true -DWITH_DAV1D=true \
+ -DWITH_JPEG_DECODER=true -DWITH_JPEG_ENCODER=true -DWITH_OpenJPEG_DECODER=true -DWITH_OpenJPEG_ENCODER=true -DWITH_OPENJPH_ENCODER=true ..
 sed -i 's@libtiff.a@libtiff.a /usr/lib/libzstd.a /usr/lib/libdeflate.a /usr/lib/libz.a /usr/lib/libwebp.a /usr/lib/libjpeg.a /usr/lib/libpng.a /usr/lib/liblzma.a /usr/lib/libsharpyuv.a@g' ./build.ninja
 sed -i 's@libSDL2-2.0.so.0.3200.10@libSDL2.a@g' ./build.ninja
 sed -i 's@libwebpmux.so@libwebpmux.a@g' ./build.ninja
