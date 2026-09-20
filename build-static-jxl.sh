@@ -76,7 +76,8 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/jpegxlmm \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
  -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
-sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libzstd.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
+sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
+sed -i 's@libOpenEXRCore-4_0.a@libOpenEXRCore-4_0.a /usr/lib/libzstd.a@g'  ./build.ninja
 sed -i 's@libImath-3_2.a@libImath-3_2.a /usr/lib/libdeflate.a /usr/lib/libopenjph.a@g'  ./build.ninja
 ninja
 ninja install
@@ -89,7 +90,8 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DJPEG_LIBRARY=/usr/lib/libjpeg.a -DJPEG_INCLUDE_DIR=/usr/include \
  -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" \
  -DZLIB_LIBRARY_RELEASE=/usr/lib/libz.a .. 
-sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libzstd.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
+sed -i 's@/usr/lib/libavif.a@/usr/lib/libavif.a /usr/lib/libaom.a /usr/lib/libgav1.a /usr/lib/libdav1d.a /usr/lib/libSvtAv1Enc.a /usr/lib/librav1e.a /usr/lib/libdav1d.a /usr/lib/libyuv.a@g' ./build.ninja
+sed -i 's@libOpenEXRCore-4_0.a@libOpenEXRCore-4_0.a /usr/lib/libzstd.a@g'  ./build.ninja
 sed -i 's@libImath-3_2.a@libImath-3_2.a /usr/lib/libdeflate.a /usr/lib/libopenjph.a@g'  ./build.ninja
 ninja
 ninja install
