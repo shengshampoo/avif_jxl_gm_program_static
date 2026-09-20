@@ -64,8 +64,10 @@ make install
 # graphicsmagick
 cd $WORKSPACE
 aq=$(curl -sL https://sourceforge.net/projects/graphicsmagick/best_release.json | jq -r '.platform_releases.linux.filename' | sed 's/.*\///' | sed 's/.tar.*$//')
-curl -sL $(curl -sL https://sourceforge.net/projects/graphicsmagick/best_release.json | jq -r '.platform_releases.linux.url' | sed 's/?.*$//') | tar xv --xz
-cd $aq
+#curl -sL $(curl -sL https://sourceforge.net/projects/graphicsmagick/best_release.json | jq -r '.platform_releases.linux.url' | sed 's/?.*$//') | tar xv --xz
+#cd $aq
+curl -SL http://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.48/GraphicsMagick-1.3.48.tar.xz | tar vx --xz
+cd GraphicsMagick-1.3.48
 sed -i '32014s@-gt 0@-gt 20@' ./configure
 sed -i '25843s@-gt 0@-gt 20@' ./configure
 sed -i '25779s@no@yes@' ./configure
