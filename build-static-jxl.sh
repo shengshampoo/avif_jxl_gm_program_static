@@ -58,7 +58,7 @@ cd openexr
 cp /usr/include/openjph/ojph_*.h /usr/include/
 mkdir build0
 cd build0
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" -DOPENEXR_FORCE_INTERNAL_OPENJPH=ON ..
 sed -i 's@libdeflate.so.0@libdeflate.a@g'  ./build.ninja
 sed -i 's@libzstd.so@libzstd.a@g'  ./build.ninja
 ninja
