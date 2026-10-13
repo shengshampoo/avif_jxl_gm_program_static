@@ -6,6 +6,17 @@ WORKSPACE=/tmp/workspace
 mkdir -p $WORKSPACE
 mkdir -p /work/artifact
 
+
+# libjpeg-turbo
+cd $WORKSPACE
+git clone https://github.com/libjpeg-turbo/libjpeg-turbo.git
+cd libjpeg-turbo
+mkdir build0
+cd build0
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DENABLE_SHARED=ON -DENABLE_STATIC=ON -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s" ..
+ninja
+ninja install
+
 # libxml
 cd $WORKSPACE
 aa=2.13.8 
