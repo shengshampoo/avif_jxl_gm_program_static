@@ -13,7 +13,7 @@ git clone https://github.com/libjpeg-turbo/libjpeg-turbo.git
 cd libjpeg-turbo
 mkdir build0
 cd build0
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_SHARED=ON -DENABLE_STATIC=ON -DWITH_JPEG8=1 -DCMAKE_EXE_LINKER_FLAGS="-no-pie -s" ..
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_SHARED=ON -DENABLE_STATIC=ON -DWITH_JPEG8=1 -DCMAKE_EXE_LINKER_FLAGS="-no-pie -s" ..
 ninja
 ninja install
 
