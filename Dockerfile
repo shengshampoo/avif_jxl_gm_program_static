@@ -11,7 +11,7 @@ RUN apk add --no-cache \
  gcc make linux-headers musl-dev \
  zlib-dev zlib-static python3-dev \
  curl git libpng-dev libpng-static \
- libwebp-dev libwebp-static libjpeg-turbo-dev libjpeg-turbo-static \
+ libwebp-dev libwebp-static \
  cmake ninja meson g++ nasm perl \
  openssl-dev openssl-libs-static \
  xz-static xz-dev libtool \
