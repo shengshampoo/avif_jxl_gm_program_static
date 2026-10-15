@@ -7,16 +7,6 @@ mkdir -p $WORKSPACE
 mkdir -p /work/artifact
 
 
-# libjpeg-turbo
-cd $WORKSPACE
-git clone https://github.com/libjpeg-turbo/libjpeg-turbo.git
-cd libjpeg-turbo
-mkdir build0
-cd build0
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_SHARED=ON -DENABLE_STATIC=ON -DWITH_JPEG8=1 -DCMAKE_EXE_LINKER_FLAGS="-no-pie -s" ..
-ninja
-ninja install
-
 # libxml
 cd $WORKSPACE
 aa=2.13.8 
@@ -110,7 +100,7 @@ cd build
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/libavifmm \
  -DAVIF_LIBXML2=SYSTEM -DAVIF_CODEC_AOM=SYSTEM -DAVIF_CODEC_DAV1D=SYSTEM \
  -DAVIF_CODEC_LIBGAV1=SYSTEM -DAVIF_CODEC_RAV1E=SYSTEM -DAVIF_CODEC_SVT=SYSTEM \
- -DAVIF_BUILD_APPS=SYSTEM -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF \
+ -DAVIF_BUILD_APPS=SYSTEM -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF \
  -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s -labsl_base" \
  -DLIBYUV_INCLUDE_DIR=/usr/include -DLIBYUV_LIBRARY=/usr/lib/libyuv.a \
  -DDAV1D_INCLUDE_DIR=/usr/include -DDAV1D_LIBRARY=/usr/lib/libdav1d.a \
@@ -129,7 +119,7 @@ cd build2
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DAVIF_LIBXML2=SYSTEM -DAVIF_CODEC_AOM=SYSTEM -DAVIF_CODEC_DAV1D=SYSTEM \
  -DAVIF_CODEC_LIBGAV1=SYSTEM -DAVIF_CODEC_RAV1E=SYSTEM -DAVIF_CODEC_SVT=SYSTEM \
- -DAVIF_BUILD_APPS=SYSTEM -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF \
+ -DAVIF_BUILD_APPS=SYSTEM -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SHARED_LIBS=OFF \
  -DCMAKE_EXE_LINKER_FLAGS="-static --static -no-pie -s -labsl_base" \
  -DLIBYUV_INCLUDE_DIR=/usr/include -DLIBYUV_LIBRARY=/usr/lib/libyuv.a \
  -DDAV1D_INCLUDE_DIR=/usr/include -DDAV1D_LIBRARY=/usr/lib/libdav1d.a \
