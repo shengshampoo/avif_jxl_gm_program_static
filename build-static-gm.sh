@@ -16,6 +16,16 @@ sed -i 's@libSDL2-2.0.so.0.3200.10@libSDL2.a@g' ./build.ninja
 ninja
 ninja install
 
+# libjpeg-turbo
+cd $WORKSPACE
+git clone https://github.com/libjpeg-turbo/libjpeg-turbo.git
+cd libjpeg-turbo
+mkdir build0
+cd build0
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_SHARED=ON -DENABLE_STATIC=ON -DWITH_JPEG8=1 -DCMAKE_EXE_LINKER_FLAGS="-no-pie -s" ..
+ninja
+ninja install
+
 # libheif
 cd $WORKSPACE
 git clone https://github.com/strukturag/libheif.git
